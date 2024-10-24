@@ -1,5 +1,4 @@
 function preload() {
-  // put preload code here
   noLoop()
 }
 
@@ -14,7 +13,7 @@ function setup() {
   let numRows = windowHeight/100;
   for (let i = 0; i < numCols * numRows; i++) {
     angles.push([random(TWO_PI), random(TWO_PI), random(TWO_PI)]);
-    colors.push([random(255), random(255), random(255)]); // Cores aleatórias
+    colors.push([random(255), random(255), random(255)]); 
   }
 }
 
@@ -25,21 +24,17 @@ function draw() {
   let w = width / cols;
   let h = height / rows;
 
-  // Desenhar a grade e triângulos girando
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       stroke(0);
       rect(i * w, j * h, w, h);
 
-      // Posição central do quadrado
       let centerX = i * w + w / 2;
       let centerY = j * h + h / 2;
 
-      // Desenhar os triângulos
       for (let k = 0; k < 3; k++) {
-        fill(colors[i + j * cols][k]); // Definir a cor do triângulo
+        fill(colors[i + j * cols][k]);
         drawRotatingTriangle(centerX, centerY, w / 4, angles[i + j * cols][k]);
-        // Atualiza o ângulo com uma rotação aleatória
         angles[i + j * cols][k] += random(0.02, 0.05);
       }
     }
